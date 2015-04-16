@@ -18,4 +18,4 @@
 
 <portlet:defineObjects />
 
-This is the <b>Innova4b</b> portlet.
+Hola Mundo!
