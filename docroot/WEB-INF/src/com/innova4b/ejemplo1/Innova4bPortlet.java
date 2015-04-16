@@ -8,6 +8,7 @@ import javax.portlet.RenderResponse;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.util.bridges.mvc.MVCPortlet;
 
 public class Innova4bPortlet extends MVCPortlet {

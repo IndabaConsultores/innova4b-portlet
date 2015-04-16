@@ -1,3 +1,4 @@
+<%@page import="com.liferay.portal.kernel.util.ParamUtil"%>
 <%
 /**
  * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
@@ -15,7 +16,26 @@
 %>
 
 <%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
+<%@ taglib uri="http://liferay.com/tld/aui" prefix="aui" %>
+<%@ taglib uri="http://liferay.com/tld/portlet" prefix="liferay-portlet" %>
 
 <portlet:defineObjects />
 
-Hola Mundo!
+<%
+String nombre = ParamUtil.getString(request, "nombre");
+%>
+
+
+<liferay-portlet:renderURL var="renderURL"/>
+<aui:form action="<%=renderURL%>" method="post" name="name">
+
+<aui:input name="nombre"/>
+
+<aui:button-row>
+	<aui:button type="submit"></aui:button>
+</aui:button-row>
+</aui:form>
+
+<%if(nombre!=null){ %>
+Hola <%=nombre%>!
+<%} %>
