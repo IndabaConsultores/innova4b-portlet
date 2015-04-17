@@ -1,6 +1,7 @@
 package com.innova4b.ejemplo1;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
@@ -10,11 +11,17 @@ import javax.portlet.RenderResponse;
 
 import org.apache.commons.lang.StringUtils;
 
+import com.innova4b.service.model.Libro;
+import com.innova4b.service.service.LibroLocalServiceUtil;
+import com.liferay.counter.service.CounterLocalServiceUtil;
+import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.servlet.SessionErrors;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ParamUtil;
+import com.liferay.portal.kernel.util.WebKeys;
+import com.liferay.portal.theme.ThemeDisplay;
 import com.liferay.util.bridges.mvc.MVCPortlet;
 
 public class Innova4bPortlet extends MVCPortlet {
@@ -23,6 +30,14 @@ public class Innova4bPortlet extends MVCPortlet {
 	public void doView(RenderRequest renderRequest,
 			RenderResponse renderResponse) throws IOException, PortletException {
 		_log.debug("Estamos en doView");
+		
+		try {
+			List<Libro> libros = LibroLocalServiceUtil.getLibros(-1, -1);
+			renderRequest.setAttribute("libros", libros);
+		} catch (SystemException e) {
+			_log.error("Error obteniendo libros", e);
+		}
+		
 		super.doView(renderRequest, renderResponse);
 	}
 	
@@ -46,11 +61,27 @@ public class Innova4bPortlet extends MVCPortlet {
 	}
 	
 	public void addLibro(ActionRequest actionRequest, ActionResponse actionResponse){
+		ThemeDisplay themeDisplay = (ThemeDisplay)actionRequest.getAttribute(WebKeys.THEME_DISPLAY);
 		String titulo = ParamUtil.getString(actionRequest, "titulo","");
 		String autor = ParamUtil.getString(actionRequest, "autor","");
-		long anio = ParamUtil.getLong(actionRequest, "anio", 2000);
+		int anio = ParamUtil.getInteger(actionRequest, "anio", 2000);
 		
 		_log.debug("titulo:" + titulo + "; autor:" + autor +  "; anio:" + anio);
+		
+		try{
+			Libro libro = LibroLocalServiceUtil.createLibro(CounterLocalServiceUtil.increment());
+			libro.setTitulo(titulo);
+			libro.setAutor(autor);
+			libro.setAnio(anio);
+			libro.setCompanyId(themeDisplay.getCompanyId());
+			libro.setGroupId(themeDisplay.getScopeGroupId());
+			LibroLocalServiceUtil.addLibro(libro);
+		}
+		catch(Exception e){
+			_log.error("Error guardando libro", e);
+		}
+		 
+		
 		
 	}
 	

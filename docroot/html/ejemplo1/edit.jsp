@@ -10,7 +10,7 @@
 	<aui:validator  name="required"  errorMessage="Campo requerido" />
 </aui:input>
 <aui:input name="anio" type="text">
-	<aui:validator name="number" errorMessage="Dene ser numérico"/>
+	<aui:validator name="number" errorMessage="Debe ser numérico"/>
 </aui:input>
 
 <aui:button-row>
