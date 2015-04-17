@@ -8,6 +8,8 @@
 <%@page import="com.liferay.portal.kernel.util.ParamUtil"%>
 <%@page import="com.liferay.portal.kernel.util.Constants" %>
 
+<%@page import="com.innova4b.service.model.Libro"%>
+
 <portlet:defineObjects />
 
 <liferay-theme:defineObjects />

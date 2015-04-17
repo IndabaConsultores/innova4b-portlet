@@ -1,4 +1,3 @@
-<%@page import="com.innova4b.service.model.Libro"%>
 <%@page import="com.liferay.portal.kernel.util.WebKeys"%>
 <%@page import="com.liferay.portal.kernel.dao.search.ResultRow"%>
 <%@include file="/html/init.jsp" %>
@@ -14,4 +13,11 @@
 	</liferay-portlet:actionURL>
 	<liferay-ui:icon image="delete" message="DELETE"
 		url="<%=deleteLibroURL.toString()%>" />
+		
+	<liferay-portlet:renderURL var="editLibroURL">
+		<liferay-portlet:param name="mvcPath" value="/html/ejemplo1/edit.jsp"/>
+		<liferay-portlet:param name="libroId" value="<%=String.valueOf(libro.getLibroId())%>"/>
+	</liferay-portlet:renderURL>
+	<liferay-ui:icon image="edit" message="EDIT"
+		url="<%=editLibroURL.toString()%>" />
 </liferay-ui:icon-menu>
