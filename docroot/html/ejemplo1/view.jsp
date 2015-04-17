@@ -33,6 +33,9 @@ List<Libro> libros = (List<Libro>)renderRequest.getAttribute("libros");
 			<liferay-ui:search-container-column-text
 				name="año"
 				value="<%= String.valueOf(libro.getAnio()) %>"/>
+				
+			<liferay-ui:search-container-column-jsp name="Actions"
+				path="/html/ejemplo1/libroActionButton.jsp" /> 
 			
 		</liferay-ui:search-container-row>
 		

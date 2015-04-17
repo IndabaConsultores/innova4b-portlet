@@ -80,12 +80,20 @@ public class Innova4bPortlet extends MVCPortlet {
 		catch(Exception e){
 			_log.error("Error guardando libro", e);
 		}
-		 
-		
-		
 	}
 	
-	
+	public void deleteLibro(ActionRequest actionRequest, ActionResponse actionResponse){
+		
+		long libroId = ParamUtil.getLong(actionRequest, "libroId",0);
+		if(libroId!=0){
+			try{
+				LibroLocalServiceUtil.deleteLibro(libroId);
+			}
+			catch(Exception e){
+				_log.error("Error borrando libro", e);
+			}
+		}
+	}
 	
 	Log _log = LogFactoryUtil.getLog(this.getClass());
 	
