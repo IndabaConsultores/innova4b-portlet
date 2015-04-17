@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="com.innova4b.service">
+	<author>aritz</author>
+	<namespace>innova</namespace>
+
+	<entity name="Libro" local-service="true" remote-service="true">
+
+		<!-- PK fields -->
+
+		<column name="libroId" type="long" primary="true" />
+
+		<column name="titulo" type="String" />
+		<column name="autor" type="String" />
+		<column name="anio" type="int" />
+		
+		<!-- Audit fields -->
+		<column name="groupId" type="long" />
+		<column name="companyId" type="long" />
+				
+		<!-- Order -->
+		<order by="desc">
+			<order-column name="anio" />
+		</order>
+
+	</entity>
+</service-builder>

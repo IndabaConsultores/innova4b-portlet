@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="com.innova4b.service.service.LibroLocalService" class="com.innova4b.service.service.impl.LibroLocalServiceImpl" />
+	<bean id="com.innova4b.service.service.LibroService" class="com.innova4b.service.service.impl.LibroServiceImpl" />
+	<bean id="com.innova4b.service.service.persistence.LibroPersistence" class="com.innova4b.service.service.persistence.LibroPersistenceImpl" parent="basePersistence" />
+</beans>

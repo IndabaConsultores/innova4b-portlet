@@ -13,6 +13,7 @@ import org.apache.commons.lang.StringUtils;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.servlet.SessionErrors;
+import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.util.bridges.mvc.MVCPortlet;
 
@@ -43,6 +44,17 @@ public class Innova4bPortlet extends MVCPortlet {
 			SessionErrors.add(actionRequest, "err2");
 		}
 	}
+	
+	public void addLibro(ActionRequest actionRequest, ActionResponse actionResponse){
+		String titulo = ParamUtil.getString(actionRequest, "titulo","");
+		String autor = ParamUtil.getString(actionRequest, "autor","");
+		long anio = ParamUtil.getLong(actionRequest, "anio", 2000);
+		
+		_log.debug("titulo:" + titulo + "; autor:" + autor +  "; anio:" + anio);
+		
+	}
+	
+	
 	
 	Log _log = LogFactoryUtil.getLog(this.getClass());
 	
