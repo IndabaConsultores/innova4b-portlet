@@ -22,6 +22,7 @@ String saludo = portletPreferences.getValue("saludo", "Hola ");
 
 <hr/>
 
+<liferay-ui:error message="error-form-1" key="err1" />
 <liferay-portlet:actionURL  var="accion1URL" name="accion1"/>
 <aui:form action="<%= accion1URL %>" method="post" name="fm1">
 
@@ -34,6 +35,7 @@ String saludo = portletPreferences.getValue("saludo", "Hola ");
 
 <hr/>
 
+<liferay-ui:error message="error-form-2" key="err2" />
 <liferay-portlet:actionURL  var="accion2URL" name="accion2"/>
 <aui:form action="<%= accion2URL %>" method="post" name="fm2">
 

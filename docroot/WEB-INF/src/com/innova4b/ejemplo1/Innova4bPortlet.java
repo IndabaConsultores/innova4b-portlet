@@ -12,6 +12,7 @@ import org.apache.commons.lang.StringUtils;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.servlet.SessionErrors;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.util.bridges.mvc.MVCPortlet;
 
@@ -28,6 +29,8 @@ public class Innova4bPortlet extends MVCPortlet {
 		String valor1 = ParamUtil.getString(actionRequest, "valor1","");
 		if(!StringUtils.isEmpty(valor1)){
 			_log.debug("Accion1: Guardamos en BDD el valor " +  valor1);
+		}else{
+			SessionErrors.add(actionRequest, "err1");
 		}
 		
 	}
@@ -36,6 +39,8 @@ public class Innova4bPortlet extends MVCPortlet {
 		String valor2 = ParamUtil.getString(actionRequest, "valor2","");
 		if(!StringUtils.isEmpty(valor2)){
 			_log.debug("Accion2: Guardamos en BDD el valor " +  valor2);
+		}else{
+			SessionErrors.add(actionRequest, "err2");
 		}
 	}
 	

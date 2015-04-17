@@ -17,6 +17,7 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
+		<resource-bundle>content.language</resource-bundle>
 		<portlet-info>
 			<title>Innova4b</title>
 			<short-title>Innova4b</short-title>
